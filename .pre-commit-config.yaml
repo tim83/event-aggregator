@@ -31,15 +31,14 @@ repos:
       - id: pretty-format-json
         args: [ "--autofix", "--no-ensure-ascii", "--no-sort-keys" ]
       - id: requirements-txt-fixer
-  - repo: https://github.com/ambv/black
-    rev: 23.11.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.6
     hooks:
-      - id: black
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 'v0.1.6'
-    hooks:
+      # Run the linter.
       - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
+        args: [ --fix ]
+      # Run the formatter.
+      - id: ruff-format
   - repo: local
     hooks:
       - id: pylint
